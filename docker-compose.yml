@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  db:
+    image: 'kartoza/postgis:14-3.2'
+    container_name: adeel.db
+    ports:
+      - 15430:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASS=click123
+      - POSTGRES_DB=adeel
+      - EXTRA_CONF=log_statement='all'
+    volumes:
+      - 'adeel_postgres_data:/var/lib/postgresql'
+
+  redis:
+    container_name: adeel.redis
+    image: 'arm64v8/redis:6.0.16'
+    ports:
+      - 16377:6379
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - 'adeel_redis_data:/arm64v8'
+
+volumes:
+  adeel_postgres_data:
+    external: true
+  adeel_redis_data:
+    external: true
