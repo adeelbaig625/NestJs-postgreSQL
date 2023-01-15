@@ -8,12 +8,12 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private _userService: UserService) {}
   @Post('/signup')
-  create(@Body() data: SignupRequestDTO): Promise<SignupResponseDTO> {
+  create(@Body() data: SignupRequestDTO): Promise<any> {
     return this._userService.create(data);
   }
 
   @Post('/login')
-  login(@Body() data: SignInRequestDTO): Promise<SignupResponseDTO> {
+  login(@Body() data: SignInRequestDTO): Promise<any> {
     return this._userService.login(data);
   }
 }

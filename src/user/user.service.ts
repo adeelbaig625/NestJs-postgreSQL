@@ -11,11 +11,11 @@ export class UserService {
     @InjectRepository(UserModel)
     private readonly userRepository: Repository<UserModel>,
   ) {}
-  create(user: SignupRequestDTO): Promise<SignupRequestDTO> {
-    return this.userRepository.save(user);
+  async create(user: SignupRequestDTO): Promise<SignupRequestDTO> {
+    return await this.userRepository.save(user);
   }
-  login(user: SignInRequestDTO): Promise<SignupRequestDTO> {
-    return this.userRepository.save(user);
+  async login(user: SignInRequestDTO): Promise<SignupRequestDTO> {
+    return await this.userRepository.save(user);
   }
 
   findAll(): any {
