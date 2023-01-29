@@ -26,7 +26,7 @@ export class UserService {
     return newUser;
   }
   async login(data: SignInRequestDTO): Promise<any> {
-    const User = await this._userRepository.findOneBy({ Email: user.Email });
+    const User = await this._userRepository.findOneBy({ Email: data.Email });
     if (!User) {
       throw new BadRequestException('User does not exist');
     }
